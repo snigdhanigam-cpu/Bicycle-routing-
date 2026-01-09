@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d9127d6b6a36f5a2cbacf4f8d22d7481 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_d9127d6b6a36f5a2cbacf4f8d22d7481" ></div>
+        
+    
+    <div style="
+        position: fixed;
+        bottom: 50px;
+        left: 50px;
+        width: 300px;
+        height: 300px;
+        z-index:9999;
+        background-color: white;
+        overflow: auto;
+        padding: 10px;
+        border:2px solid grey;">
+      <h4>Navigation Instructions</h4>
+      <ol>
+      
+         <li>{'maneuver': 'DEPART', 'instructions': 'Head northwest toward I St NW'}</li>
+      
+         <li>{'maneuver': 'TURN_RIGHT', 'instructions': 'Turn right onto I St NW'}</li>
+      
+         <li>{'maneuver': 'TURN_RIGHT', 'instructions': 'Turn right onto 21st St NW'}</li>
+      
+         <li>{'maneuver': 'TURN_LEFT', 'instructions': 'Turn left onto C St NW'}</li>
+      
+         <li>{'maneuver': 'TURN_RIGHT', 'instructions': 'Turn right onto 20th St NW'}</li>
+      
+         <li>{'maneuver': 'TURN_LEFT', 'instructions': 'Turn left\nRestricted usage road'}</li>
+      
+         <li>{'maneuver': 'TURN_RIGHT', 'instructions': 'Turn right\nRestricted usage road'}</li>
+      
+         <li>{'maneuver': 'DEPART', 'instructions': 'Head north toward 19th St NW\nRestricted usage road'}</li>
+      
+         <li>{'maneuver': 'TURN_RIGHT', 'instructions': 'Turn right onto 19th St NW'}</li>
+      
+         <li>{'maneuver': 'TURN_LEFT', 'instructions': 'Turn left onto Constitution Ave. NW'}</li>
+      
+         <li>{'maneuver': 'TURN_RIGHT', 'instructions': 'Turn right'}</li>
+      
+         <li>{'maneuver': 'TURN_RIGHT', 'instructions': 'Turn right'}</li>
+      
+         <li>{'maneuver': 'TURN_LEFT', 'instructions': 'Turn left'}</li>
+      
+         <li>{'maneuver': 'TURN_RIGHT', 'instructions': 'Turn right'}</li>
+      
+         <li>{'maneuver': 'TURN_SLIGHT_LEFT', 'instructions': 'Slight left'}</li>
+      
+         <li>{'maneuver': 'TURN_SLIGHT_LEFT', 'instructions': 'Slight left'}</li>
+      
+         <li>{'maneuver': 'TURN_LEFT', 'instructions': 'Turn left'}</li>
+      
+         <li>{'maneuver': 'TURN_RIGHT', 'instructions': 'Turn right toward Independence Ave SW'}</li>
+      
+         <li>{'maneuver': 'TURN_LEFT', 'instructions': 'Turn left onto Independence Ave SW'}</li>
+      
+         <li>{'maneuver': 'TURN_RIGHT', 'instructions': 'Turn right'}</li>
+      
+         <li>{'maneuver': 'TURN_LEFT', 'instructions': 'Turn left\nWalk your bicycle'}</li>
+      
+         <li>{'maneuver': 'TURN_RIGHT', 'instructions': 'Turn right\nWalk your bicycle'}</li>
+      
+         <li>{'maneuver': 'TURN_RIGHT', 'instructions': 'Turn right\nWalk your bicycle'}</li>
+      
+      </ol>
+    </div>
+    
+</body>
+<script>
+    
+    
+            var map_d9127d6b6a36f5a2cbacf4f8d22d7481 = L.map(
+                "map_d9127d6b6a36f5a2cbacf4f8d22d7481",
+                {
+                    center: [38.90016, -77.04736],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d0afeb6223046d7055e90a37f8d1a0b8 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d0afeb6223046d7055e90a37f8d1a0b8.addTo(map_d9127d6b6a36f5a2cbacf4f8d22d7481);
+        
+    
+            var poly_line_f7774179907f3bc03c6f7ab40c59e9a7 = L.polyline(
+                [[38.90016, -77.04736], [38.90022, -77.04747], [38.90041, -77.0475], [38.9007, -77.04752], [38.9007, -77.04665], [38.89835, -77.04666], [38.89736, -77.04668], [38.89555, -77.0467], [38.89541, -77.0467], [38.89523, -77.04666], [38.89467, -77.0467], [38.89354, -77.04668], [38.89354, -77.04563], [38.89355, -77.04508], [38.89346, -77.04491], [38.89319, -77.04492], [38.89319, -77.04438], [38.89297, -77.04437], [38.89319, -77.04438], [38.8932, -77.04348], [38.89211, -77.04348], [38.89211, -77.04314], [38.89189, -77.04314], [38.89189, -77.04349], [38.89174, -77.04349], [38.89172, -77.04369], [38.8916, -77.04401], [38.89141, -77.04408], [38.89121, -77.04425], [38.89103, -77.04452], [38.89094, -77.04462], [38.89072, -77.04475], [38.89063, -77.04484], [38.89056, -77.04499], [38.89051, -77.04524], [38.8905, -77.04552], [38.89059, -77.04597], [38.89021, -77.04735], [38.89019, -77.04763], [38.89021, -77.04782], [38.89024, -77.04793], [38.89016, -77.04817], [38.89016, -77.04836], [38.89019, -77.04845], [38.89004, -77.04859], [38.88995, -77.04874], [38.88987, -77.04878], [38.88881, -77.04879], [38.88863, -77.04874], [38.88828, -77.04835], [38.88815, -77.04851], [38.88782, -77.04858], [38.88728, -77.04808], [38.88694, -77.04809], [38.88682, -77.04481], [38.88672, -77.04479], [38.88668, -77.04311], [38.88671, -77.04266], [38.88684, -77.04158], [38.88687, -77.04106], [38.8867, -77.04107], [38.88659, -77.04103], [38.8865, -77.04113], [38.88644, -77.04129], [38.88641, -77.0415], [38.8864, -77.04155]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_d9127d6b6a36f5a2cbacf4f8d22d7481);
+        
+    
+            var marker_20c2e05805ada458e5d4b3d8107cb590 = L.marker(
+                [38.90016, -77.04736],
+                {
+}
+            ).addTo(map_d9127d6b6a36f5a2cbacf4f8d22d7481);
+        
+    
+            var icon_adb10acc526c847224af607edac305be = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e99e0ef15059d42550da6b44a469ff62 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9a8dddef6478691c85210209d036a295 = $(`<div id="html_9a8dddef6478691c85210209d036a295" style="width: 100.0%; height: 100.0%;">Start</div>`)[0];
+                popup_e99e0ef15059d42550da6b44a469ff62.setContent(html_9a8dddef6478691c85210209d036a295);
+            
+        
+
+        marker_20c2e05805ada458e5d4b3d8107cb590.bindPopup(popup_e99e0ef15059d42550da6b44a469ff62)
+        ;
+
+        
+    
+    
+                marker_20c2e05805ada458e5d4b3d8107cb590.setIcon(icon_adb10acc526c847224af607edac305be);
+            
+    
+            var marker_98170f25f01f871f840c7bcb429efde5 = L.marker(
+                [38.8864, -77.04155],
+                {
+}
+            ).addTo(map_d9127d6b6a36f5a2cbacf4f8d22d7481);
+        
+    
+            var icon_b910b207c7ac0f797c6a7e8dfdaf8e3e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "stop",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fc38ca179f9c6b9723e86646c05ff73b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7c21c9ca371cf438d759d544fe26bfb4 = $(`<div id="html_7c21c9ca371cf438d759d544fe26bfb4" style="width: 100.0%; height: 100.0%;">End</div>`)[0];
+                popup_fc38ca179f9c6b9723e86646c05ff73b.setContent(html_7c21c9ca371cf438d759d544fe26bfb4);
+            
+        
+
+        marker_98170f25f01f871f840c7bcb429efde5.bindPopup(popup_fc38ca179f9c6b9723e86646c05ff73b)
+        ;
+
+        
+    
+    
+                marker_98170f25f01f871f840c7bcb429efde5.setIcon(icon_b910b207c7ac0f797c6a7e8dfdaf8e3e);
+            
+    
+            var marker_ba57663d0b38ac7ee9d6b7daff4f8798 = L.marker(
+                [38.89286325576398, -77.04419638725861],
+                {
+}
+            ).addTo(map_d9127d6b6a36f5a2cbacf4f8d22d7481);
+        
+    
+            var icon_1d57830027c4fcf5ca0d250341556e65 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "flag",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_016e5ea72a3c6ddb1c9f8d5399ddb162 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_77cbec4438896292772f6968bd4f4dd1 = $(`<div id="html_77cbec4438896292772f6968bd4f4dd1" style="width: 100.0%; height: 100.0%;"><b>🚩 Scenic POI</b></div>`)[0];
+                popup_016e5ea72a3c6ddb1c9f8d5399ddb162.setContent(html_77cbec4438896292772f6968bd4f4dd1);
+            
+        
+
+        marker_ba57663d0b38ac7ee9d6b7daff4f8798.bindPopup(popup_016e5ea72a3c6ddb1c9f8d5399ddb162)
+        ;
+
+        
+    
+    
+                marker_ba57663d0b38ac7ee9d6b7daff4f8798.setIcon(icon_1d57830027c4fcf5ca0d250341556e65);
+            
+</script>
+</html>
